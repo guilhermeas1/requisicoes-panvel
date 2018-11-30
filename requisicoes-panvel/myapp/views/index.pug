@@ -2,7 +2,7 @@ extends layout
 
 block content
 	form(method='POST' action='/')
-		label(for='cpf') CPF:
+		label(for='cpf') CPFs (separados por ;):
 		br
 		textarea#name(name='cpf', cols="30", rows="5")
 			| #{cpf}
@@ -28,7 +28,7 @@ block content
 				li 18:00 - 23:00: #{data.horarios.noite}
 				li 23:00 - 08:00: #{data.horarios.madrugada}
 
-		p Segmentação
-			ul
-				//- each seg in data.segmentacao
-				//- 	li= seg.key + ': ' + seg.val
+		//- p Segmentação
+		//- 	ul
+		//- 		each seg in data.segmentacao
+		//- 			li= seg.key + ': ' + seg.val
