@@ -1,5 +1,34 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	form(method='POST' action='/')
+		label(for='cpf') CPF:
+		br
+		textarea#name(name='cpf', cols="30", rows="5")
+			| #{cpf}
+		br
+		button(type='submit') Buscar
+
+	if data
+		p Realizado: #{data.realizado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+
+		p Vendas: #{data.count}
+
+		p Canais
+			ul
+				li PEDIDO_INTERNET("I"): #{data.canais.internet}
+				li PEDIDO_ALO("A"): #{data.canais.alo}
+				li PEDIDO_FILIAL("F"): #{data.canais.filial}
+				li DESCONHECIDO("D"): #{data.canais.desconhecido}
+
+		p Horários
+			ul
+				li 08:00 - 12:00: #{data.horarios.manha}
+				li 12:00 - 18:00: #{data.horarios.tarde}
+				li 18:00 - 23:00: #{data.horarios.noite}
+				li 23:00 - 08:00: #{data.horarios.madrugada}
+
+		p Segmentação
+			ul
+				//- each seg in data.segmentacao
+				//- 	li= seg.key + ': ' + seg.val
